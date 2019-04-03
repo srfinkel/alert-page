@@ -1,42 +1,35 @@
-<% if @post.errors.any? %>
-    <h2> The following errors prevented the article from saving: </h2>
-    <ul>
-    <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-    </ul>
-<% end %>
+<%= render 'shared/errors', obj: @post %>
 
 <div class="container"> 
-<div class="row"> 
-    <div class="col-md">
-        <%= form_for(@post, :html => { class: "form-horizontal", role: "form" }) do |f| %>
-            <div class="form-group">
-                <div class="control-label col-md"> 
-                    <%= f.label :title %>
+    <div class="row"> 
+        <div class="col-xs-12">
+            <%= form_for(@post, :html => { class: "form-horizontal", role: "form" }) do |f| %>
+                <div class="form-group">
+                    <div class="control-label col-sm-2"> 
+                        <%= f.label :title %>
+                    </div>
+                    <div class="col-sm-8"> 
+                        <%= f.text_field :title, class: "form-control", autofocus: true %>
+                    </div>
                 </div>
-                <div class="col-md"> 
-                    <%= f.text_field :title %>
+                <div class="form-group">
+                    <div class="control-label col-sm-2"> 
+                        <%= f.label :description %>
+                    </div>
+                    <div class="col-sm-8">
+                        <%= f.text_area :description, rows: 10, class: "form-control" %>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="control-label col-sm"> 
-                    <%= f.label :description %>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10"> 
+                        <%= f.submit class: "btn btn-primary" %>
+                    </div>
                 </div>
-                <div class="col-md">
-                    <%= f.text_area :description %>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2"> 
-                    <%= f.submit class: "btn btn-primary" %>
-                </div>
-            </div>
-            <% end %>
+                <% end %>
 
-            <div class="col">
-            <%= link_to 'Back', posts_path %>
+                <div class="col-xs-4 col-xs-offset-2">
+                [ <%= link_to 'Cancel and Return to Post Listing', posts_path %> ]
             </div>
+        </div>
     </div>
-</div>
 </div>
