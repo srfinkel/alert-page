@@ -3,13 +3,15 @@
     <h3 class="text-center">Admin Only</h3>
   </div>
   <div class="row">
-
       <table class="table table-striped">
         <thead>
           <tr>
             <th>Date Created</th>
             <th>Title</th>
             <th>Description</th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -25,10 +27,9 @@
           <% end %>
         </tbody>
       </table>
-
-    <div class=" float-right">
-        <%= link_to 'Create a new post', new_post_path, class: "btn btn-primary btn-lg" %>
-        <%= link_to 'Logout', root_path, class: "btn btn-success btn-lg" %>
+    <div class="pull-right">
+        <%= link_to 'Create a new post', new_post_path, class: "btn btn-primary" %>
+        <%= link_to 'Logout', root_path, class: "btn btn-success" %>
     </div>
   </div>
 </div>

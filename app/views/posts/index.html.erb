@@ -2,16 +2,13 @@
   <div class="row">
     <h3 class="text-center">All current posts</h3>
   </div>
-</div>
-<div class="container">
   <div class="row">
-    <div class="col">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Date Created</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
+            <th>Date Created</th>
+            <th>Title</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
@@ -24,11 +21,31 @@
           <% end %>
         </tbody>
       </table>
-    </div>
-    <div>
+    <div class="pull-right">
         [ <%= link_to 'Sign in to admin', admin_path %> ] 
     </div>
   </div>
 </div>
 
 
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+      <% @posts.each do | post | %>
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <%= post.title %>
+          <%= post.created_at.strftime("%b %-d, %Y") %>
+        </a>
+        <% end %>
+      </h4>
+    </div>
+    <% @posts.each do | post | %>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <%= post.description %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
