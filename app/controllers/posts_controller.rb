@@ -36,10 +36,14 @@ class PostsController < ApplicationController
         @posts = Post.all 
     end
 
+    def admin
+        @posts = Post.all 
+    end
+
     def destroy
         @post.destroy
         flash[:notice] = "Post was deleted"
-        redirect_to posts_path
+        redirect_to admin_path
     end
 
     private

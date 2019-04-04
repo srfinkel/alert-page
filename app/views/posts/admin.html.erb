@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h3 class="text-center">All current posts</h3>
+    <h3 class="text-center">Admin Only</h3>
   </div>
 </div>
 <div class="container">
@@ -20,15 +20,17 @@
               <td><%= post.created_at.strftime("%b %-d, %Y") %></td>
               <td><%= post.title %></td>
               <td><%= post.description %></td>
+              <td><%= link_to 'Edit', edit_post_path(post) %></td>
+              <td><%= link_to 'Show', post_path(post) %></td>
+              <td><%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" } %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
     <div>
-        [ <%= link_to 'Sign in to admin', admin_path %> ] 
+        <%= link_to 'Create a new post', new_post_path, class: "btn btn-primary btn-lg float-right" %>
     </div>
+    <div>[ <%= link_to 'Home', root_path %> ]</div>
   </div>
 </div>
-
-
